@@ -3,8 +3,10 @@
 *.iml
 .gradle
 /local.properties
+local.properties
 .DS_Store
 /build
 /captures
 gradlew
 gradlew.bat
+
