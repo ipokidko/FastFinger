@@ -9,4 +9,6 @@ local.properties
 /captures
 gradlew
 gradlew.bat
-
+app/app.iml
+gradle/wrapper/gradle-wrapper.properties
+gradle/wrapper/gradle-wrapper.jar
