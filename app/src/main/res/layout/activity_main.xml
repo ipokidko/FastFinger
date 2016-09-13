@@ -20,7 +20,8 @@
         android:text="Score"
         android:textColor="#fff"
         android:layout_margin="16dp"
-        android:textSize="@dimen/notification_large_icon_width" />
+        android:textSize="@dimen/notification_large_icon_width"
+        android:id="@+id/score" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -257,7 +258,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Start" />
+        android:text="Start"
+        android:onClick="startButton"/>
 
 
 </RelativeLayout>
