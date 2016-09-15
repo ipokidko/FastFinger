@@ -36,53 +36,47 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView3"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView4"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView5"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView6"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView7"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
         </LinearLayout>
 
@@ -92,53 +86,47 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView8"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView9"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView10"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView11"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView12"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView13"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
         </LinearLayout>
 
         <LinearLayout
@@ -147,53 +135,47 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView14"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView15"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView16"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView17"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView18"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView19"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
         </LinearLayout>
 
         <LinearLayout
@@ -202,53 +184,47 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView20"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView21"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView22"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView23"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView24"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/imageView25"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@drawable/button"
-                android:onClick="increaseCounter" />
+                android:background="@drawable/button" />
         </LinearLayout>
     </LinearLayout>
 
@@ -258,8 +234,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Start"
-        android:onClick="startButton"/>
+        android:text="Start" />
 
 
 </RelativeLayout>
