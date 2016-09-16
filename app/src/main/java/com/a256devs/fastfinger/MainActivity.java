@@ -4,13 +4,15 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener {
 
     int counter = 0;
     private TextView mScoreInfoTexyView;
@@ -45,6 +47,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         setContentView(R.layout.activity_main);
         mScoreInfoTexyView = (TextView) findViewById(R.id.score);
 
@@ -76,30 +81,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startButton = (Button) findViewById(R.id.button);
 
 
-        button1.setOnClickListener(this);
-        button2.setOnClickListener(this);
-        button3.setOnClickListener(this);
-        button4.setOnClickListener(this);
-        button5.setOnClickListener(this);
-        button6.setOnClickListener(this);
-        button7.setOnClickListener(this);
-        button8.setOnClickListener(this);
-        button9.setOnClickListener(this);
-        button10.setOnClickListener(this);
-        button11.setOnClickListener(this);
-        button12.setOnClickListener(this);
-        button13.setOnClickListener(this);
-        button14.setOnClickListener(this);
-        button15.setOnClickListener(this);
-        button16.setOnClickListener(this);
-        button17.setOnClickListener(this);
-        button18.setOnClickListener(this);
-        button19.setOnClickListener(this);
-        button20.setOnClickListener(this);
-        button21.setOnClickListener(this);
-        button22.setOnClickListener(this);
-        button23.setOnClickListener(this);
-        button24.setOnClickListener(this);
+        button1.setOnTouchListener(this);
+        button2.setOnTouchListener(this);
+        button3.setOnTouchListener(this);
+        button4.setOnTouchListener(this);
+        button5.setOnTouchListener(this);
+        button6.setOnTouchListener(this);
+        button7.setOnTouchListener(this);
+        button8.setOnTouchListener(this);
+        button9.setOnTouchListener(this);
+        button10.setOnTouchListener(this);
+        button11.setOnTouchListener(this);
+        button12.setOnTouchListener(this);
+        button13.setOnTouchListener(this);
+        button14.setOnTouchListener(this);
+        button15.setOnTouchListener(this);
+        button16.setOnTouchListener(this);
+        button17.setOnTouchListener(this);
+        button18.setOnTouchListener(this);
+        button19.setOnTouchListener(this);
+        button20.setOnTouchListener(this);
+        button21.setOnTouchListener(this);
+        button22.setOnTouchListener(this);
+        button23.setOnTouchListener(this);
+        button24.setOnTouchListener(this);
 
         startButton.setOnClickListener(this);
 
@@ -114,10 +119,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (view.getId() == R.id.button) {
             counter = 0;
             displayCounter(counter);
-        } else {
+        }
+
+    }
+
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+
+        if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
             counter++;
             displayCounter(counter);
         }
-
+        return false;
     }
 }
