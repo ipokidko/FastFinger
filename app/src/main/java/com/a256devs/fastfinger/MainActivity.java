@@ -1,6 +1,7 @@
 package com.a256devs.fastfinger;
 
 import android.content.Context;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.AttributeSet;
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     int counter = 0;
     private TextView mScoreInfoTexyView;
+    private TextView mTimerText;
 
     ImageButton[] buttons = new ImageButton[24];
 
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         setContentView(R.layout.activity_main);
         mScoreInfoTexyView = (TextView) findViewById(R.id.score);
+        mTimerText = (TextView) findViewById(R.id.timer);
 
         buttons[0] = (ImageButton) findViewById(R.id.imageView2);
         buttons[1] = (ImageButton) findViewById(R.id.imageView3);
@@ -74,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         if (view.getId() == R.id.button) {
             counter = 0;
             displayCounter(counter);
+            countDownTimer();
         }
 
     }
@@ -86,5 +90,20 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             displayCounter(counter);
         }
         return false;
+    }
+
+
+    public void countDownTimer(){
+
+        new CountDownTimer(15000, 200) {
+
+            public void onTick(long millisUntilFinished) {
+                mTimerText.setText(String.format("%d.%d", millisUntilFinished / 1000, (millisUntilFinished % 1000) / 100));
+            }
+
+            public void onFinish() {
+                mTimerText.setText("done!");
+            }
+        }.start();
     }
 }

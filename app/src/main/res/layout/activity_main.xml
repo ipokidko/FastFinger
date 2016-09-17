@@ -20,15 +20,16 @@
         android:text="Score"
         android:textColor="#fff"
         android:layout_margin="16dp"
-        android:textSize="@dimen/notification_large_icon_width"
+        android:textSize="@dimen/abc_text_size_display_2_material"
         android:id="@+id/score" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_above="@+id/button"
+        android:baselineAligned="false"
+        android:id="@+id/linearLayout">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -234,7 +235,20 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Start" />
+        android:text="Start"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15.00"
+        android:id="@+id/timer"
+        android:layout_above="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/abc_text_size_display_2_material"
+        android:padding="8dp"/>
 
 
 </RelativeLayout>
