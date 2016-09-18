@@ -232,13 +232,14 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="15.00"
+        android:text="Start"
         android:id="@+id/timer"
         android:layout_above="@+id/linearLayout"
         android:layout_centerHorizontal="true"
-        android:textColor="#ffffff"
+        android:textColor="@color/highlighted_text_material_light"
         android:textSize="@dimen/abc_text_size_display_2_material"
-        android:padding="8dp"/>
+        android:padding="8dp"
+        android:background="@color/background_material_light" />
 
     <LinearLayout
         android:layout_width="match_parent"

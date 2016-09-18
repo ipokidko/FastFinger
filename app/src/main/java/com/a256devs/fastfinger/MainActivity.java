@@ -21,8 +21,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     ImageButton[] buttons = new ImageButton[24];
 
-    Button startButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,13 +56,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         buttons[22] = (ImageButton) findViewById(R.id.imageView24);
         buttons[23] = (ImageButton) findViewById(R.id.imageView25);
 
-        startButton = (Button) findViewById(R.id.button);
-
         for (ImageButton button : buttons) {
             button.setOnTouchListener(this);
         }
 
-        startButton.setOnClickListener(this);
+        mTimerText.setOnClickListener(this);
 
     }
 
@@ -74,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.button) {
+        if (view.getId() == R.id.timer) {
             counter = 0;
             displayCounter(counter);
             countDownTimer();
