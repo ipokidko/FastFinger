@@ -5,19 +5,16 @@ import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener {
 
     int mCounter = 0;
-    private TextView mScoreInfoTexyView;
+    private TextView mScoreInfoTextView;
     private TextView mTimerText;
     private TextView mBestScore;
 
@@ -36,13 +33,13 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         setContentView(R.layout.activity_main);
 
-        mScoreInfoTexyView = (TextView) findViewById(R.id.score);
+        mScoreInfoTextView = (TextView) findViewById(R.id.score);
         mTimerText = (TextView) findViewById(R.id.timer);
         mBestScore = (TextView) findViewById(R.id.bestScoreTextView);
 
         // Getting SharedPreferences file or read it if exist.
         sharedPref = getSharedPreferences(getString(R.string.app_preferences), Context.MODE_PRIVATE);
-        readBestScore();
+        readAndShowBestScore();
         editor = sharedPref.edit();
 
         buttons[0] = (ImageButton) findViewById(R.id.imageView2);
@@ -81,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     public void displayCounter(int counter) {
-        mScoreInfoTexyView.setText(String.valueOf(counter));
+        mScoreInfoTextView.setText(String.valueOf(counter));
     }
 
     @Override
@@ -120,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
                 if (mCounter > mHighScore) {
                     writeBestStore();
+                    readAndShowBestScore();
                 }
             }
         }.start();
@@ -128,10 +126,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public void writeBestStore() {
         editor.putInt(getString(R.string.best_score), mCounter);
         editor.commit();
-        mBestScore.setText("Best " + mCounter);
     }
 
-    public void readBestScore() {
+    public void readAndShowBestScore() {
         mHighScore = sharedPref.getInt(getString(R.string.best_score), mCounter);
         mBestScore.setText("Best " + mHighScore);
     }
