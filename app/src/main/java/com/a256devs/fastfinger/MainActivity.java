@@ -1,6 +1,7 @@
 package com.a256devs.fastfinger;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,21 +16,34 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener {
 
-    int counter = 0;
+    int mCounter = 0;
     private TextView mScoreInfoTexyView;
     private TextView mTimerText;
+    private TextView mBestScore;
 
     ImageButton[] buttons = new ImageButton[24];
+
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor editor;
+    int mHighScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // fullscreen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         setContentView(R.layout.activity_main);
+
         mScoreInfoTexyView = (TextView) findViewById(R.id.score);
         mTimerText = (TextView) findViewById(R.id.timer);
+        mBestScore = (TextView) findViewById(R.id.bestScoreTextView);
+
+        // Getting SharedPreferences file or read it if exist.
+        sharedPref = getSharedPreferences(getString(R.string.app_preferences), Context.MODE_PRIVATE);
+        readBestScore();
+        editor = sharedPref.edit();
 
         buttons[0] = (ImageButton) findViewById(R.id.imageView2);
         buttons[1] = (ImageButton) findViewById(R.id.imageView3);
@@ -62,6 +76,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         mTimerText.setOnClickListener(this);
 
+
+
     }
 
     public void displayCounter(int counter) {
@@ -71,8 +87,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.timer) {
-            counter = 0;
-            displayCounter(counter);
+            mCounter = 0;
+            displayCounter(mCounter);
             countDownTimer();
             mTimerText.setClickable(false);
         }
@@ -83,8 +99,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public boolean onTouch(View view, MotionEvent motionEvent) {
 
         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-            counter++;
-            displayCounter(counter);
+            mCounter++;
+            displayCounter(mCounter);
         }
         return false;
     }
@@ -101,7 +117,22 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             public void onFinish() {
                 mTimerText.setText("Try again!");
                 mTimerText.setClickable(true);
+
+                if (mCounter > mHighScore) {
+                    writeBestStore();
+                }
             }
         }.start();
+    }
+
+    public void writeBestStore() {
+        editor.putInt(getString(R.string.best_score), mCounter);
+        editor.commit();
+        mBestScore.setText("Best " + mCounter);
+    }
+
+    public void readBestScore() {
+        mHighScore = sharedPref.getInt(getString(R.string.best_score), mCounter);
+        mBestScore.setText("Best " + mHighScore);
     }
 }
