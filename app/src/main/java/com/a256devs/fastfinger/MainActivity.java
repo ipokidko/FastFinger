@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     int counter = 0;
     private TextView mScoreInfoTexyView;
     private TextView mTimerText;
-    boolean mTimerOn;
 
     ImageButton[] buttons = new ImageButton[24];
 
@@ -31,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         setContentView(R.layout.activity_main);
         mScoreInfoTexyView = (TextView) findViewById(R.id.score);
         mTimerText = (TextView) findViewById(R.id.timer);
-        mTimerOn = false;
 
         buttons[0] = (ImageButton) findViewById(R.id.imageView2);
         buttons[1] = (ImageButton) findViewById(R.id.imageView3);
@@ -72,11 +70,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.timer && !mTimerOn) {
+        if (view.getId() == R.id.timer) {
             counter = 0;
             displayCounter(counter);
             countDownTimer();
-            mTimerOn = true;
+            mTimerText.setClickable(false);
         }
 
     }
@@ -102,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
             public void onFinish() {
                 mTimerText.setText("Try again!");
-                mTimerOn = false;
+                mTimerText.setClickable(true);
             }
         }.start();
     }
