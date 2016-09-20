@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener {
@@ -17,6 +18,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private TextView mScoreInfoTextView;
     private TextView mTimerText;
     private TextView mBestScore;
+    private boolean mVolumeState = true;
+    private ImageView mVolumeButton;
+
 
     ImageButton[] buttons = new ImageButton[24];
 
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mScoreInfoTextView = (TextView) findViewById(R.id.scoreNumber);
         mTimerText = (TextView) findViewById(R.id.timer);
         mBestScore = (TextView) findViewById(R.id.bestScoreNumber);
+        mVolumeButton = (ImageView) findViewById(R.id.soundButton);
 
         // Getting SharedPreferences file or read it if exist.
         sharedPref = getSharedPreferences(getString(R.string.app_preferences), Context.MODE_PRIVATE);
@@ -72,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         }
 
         mTimerText.setOnClickListener(this);
-
+        mVolumeButton.setOnClickListener(this);
 
 
     }
@@ -83,11 +88,18 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.timer) {
-            mCounter = 0;
-            displayCounter(mCounter);
-            countDownTimer();
-            mTimerText.setClickable(false);
+        switch (view.getId()) {
+            case R.id.timer:
+                mCounter = 0;
+                displayCounter(mCounter);
+                countDownTimer();
+                mTimerText.setClickable(false);
+                break;
+            case R.id.soundButton:
+                mVolumeState = !mVolumeState;
+                writeVolumeState();
+                readAndSetResourceVolumeState();
+                break;
         }
 
     }
@@ -103,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
 
-    public void countDownTimer(){
+    public void countDownTimer() {
 
         new CountDownTimer(15000, 100) {
 
@@ -128,15 +140,30 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         editor.commit();
     }
 
+    public void writeVolumeState() {
+        editor.putBoolean(getString(R.string.volume_state), mVolumeState);
+        editor.commit();
+    }
+
     public void readAndShowBestScore() {
         mHighScore = sharedPref.getInt(getString(R.string.best_score), mCounter);
         mBestScore.setText(String.valueOf(mHighScore));
+    }
+
+    public void readAndSetResourceVolumeState() {
+        mVolumeState = sharedPref.getBoolean(getString(R.string.volume_state), mVolumeState);
+        if(mVolumeState) {
+            mVolumeButton.setImageResource(R.drawable.volume_on);
+        } else {
+            mVolumeButton.setImageResource(R.drawable.volume_off);
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         //ToDo Read volume state from Shared pref and set
+        readAndSetResourceVolumeState();
 
     }
 }
