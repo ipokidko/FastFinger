@@ -33,9 +33,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         setContentView(R.layout.activity_main);
 
-        mScoreInfoTextView = (TextView) findViewById(R.id.score);
+        mScoreInfoTextView = (TextView) findViewById(R.id.scoreNumber);
         mTimerText = (TextView) findViewById(R.id.timer);
-        mBestScore = (TextView) findViewById(R.id.bestScoreTextView);
+        mBestScore = (TextView) findViewById(R.id.bestScoreNumber);
 
         // Getting SharedPreferences file or read it if exist.
         sharedPref = getSharedPreferences(getString(R.string.app_preferences), Context.MODE_PRIVATE);
@@ -130,6 +130,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     public void readAndShowBestScore() {
         mHighScore = sharedPref.getInt(getString(R.string.best_score), mCounter);
-        mBestScore.setText("Best " + mHighScore);
+        mBestScore.setText(String.valueOf(mHighScore));
     }
 }
