@@ -132,4 +132,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mHighScore = sharedPref.getInt(getString(R.string.best_score), mCounter);
         mBestScore.setText(String.valueOf(mHighScore));
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //ToDo Read volume state from Shared pref and set
+
+    }
 }
