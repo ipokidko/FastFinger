@@ -12,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import static com.a256devs.fastfinger.UiMethods.randomStringFromArray;
+
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener {
 
     int mCounter = 0;
@@ -152,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     public void readAndSetResourceVolumeState() {
         mVolumeState = sharedPref.getBoolean(getString(R.string.volume_state), mVolumeState);
-        if(mVolumeState) {
+        if (mVolumeState) {
             mVolumeButton.setImageResource(R.drawable.volume_on);
         } else {
             mVolumeButton.setImageResource(R.drawable.volume_off);
@@ -162,8 +164,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     @Override
     protected void onResume() {
         super.onResume();
-        //ToDo Read volume state from Shared pref and set
         readAndSetResourceVolumeState();
+
+        TextView tipsTV = (TextView) findViewById(R.id.main_tips_tv);
+        String s = randomStringFromArray(getResources().getStringArray(R.array.tips));
+        tipsTV.setText(s);
 
     }
 }
