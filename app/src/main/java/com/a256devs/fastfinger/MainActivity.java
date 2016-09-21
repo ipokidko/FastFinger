@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private TextView mBestScore;
     private boolean mVolumeState = true;
     private ImageView mVolumeButton;
-    private Button mFacebookButton;
+    private ImageView mFacebookButton;
+    private ImageView mResetButton;
     private boolean mIsGame = false;
 
     Random rand = new Random();
@@ -58,7 +59,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mTimerText = (TextView) findViewById(R.id.timer);
         mBestScore = (TextView) findViewById(R.id.bestScoreNumber);
         mVolumeButton = (ImageView) findViewById(R.id.soundButton);
-        mFacebookButton = (Button) findViewById(R.id.facebook_button);
+        mFacebookButton = (ImageView) findViewById(R.id.facebook_button);
+        mResetButton = (ImageView) findViewById(R.id.reset_button);
 
         // Getting SharedPreferences file or read it if exist.
         sharedPref = getSharedPreferences(getString(R.string.app_preferences), Context.MODE_PRIVATE);
@@ -97,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mTimerText.setOnClickListener(this);
         mVolumeButton.setOnClickListener(this);
         mFacebookButton.setOnClickListener(this);
+        mResetButton.setOnClickListener(this);
 
 
     }
@@ -124,6 +127,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 break;
             case R.id.facebook_button:
                 dialog.show(getFragmentManager(), "aaa");
+                break;
+            case R.id.reset_button:
+                reset();
+                break;
         }
 
     }
@@ -212,8 +219,14 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         buttons[index].setVisibility(View.INVISIBLE);
     }
 
-    public void visible () {
+    public void visible() {
         mIndexOfButton = rand.nextInt(buttons.length);
         buttons[mIndexOfButton].setVisibility(View.VISIBLE);
+    }
+
+    public void reset() {
+        editor.putInt(getString(R.string.best_score), 0);
+        editor.commit();
+        readAndShowBestScore();
     }
 }

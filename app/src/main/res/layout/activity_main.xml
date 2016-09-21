@@ -49,9 +49,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/button_backgound"
-                android:textStyle="bold"
                 android:textColor="@color/background_color"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -79,22 +79,23 @@
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/button_backgound"
                 android:text="0"
-                android:textStyle="bold"
                 android:textColor="@color/background_color"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>
 
     <TextView
+        android:id="@+id/main_tips_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tips"
-        android:id="@+id/main_tips_tv"
-        android:textColor="@color/white"
-        android:textStyle="bold"
+        android:layout_alignStart="@+id/linearLayout2"
         android:layout_alignTop="@+id/soundButton"
-        android:layout_alignStart="@+id/linearLayout2" />
+        android:text="Tips"
+        android:layout_margin="4dp"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/soundButton"
@@ -102,7 +103,7 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/linearLayout2"
         android:layout_below="@+id/linearLayout2"
-        android:src="@drawable/volume_on"/>
+        android:src="@drawable/volume_on" />
 
     <TextView
         android:id="@+id/timer"
@@ -110,13 +111,13 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/linearLayout"
         android:layout_centerHorizontal="true"
+        android:layout_margin="4dp"
         android:background="@drawable/button_backgound"
         android:padding="8dp"
-        android:layout_margin="4dp"
         android:text="@string/start"
-        android:textStyle="bold"
         android:textColor="@color/background_color"
-        android:textSize="22sp" />
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -334,50 +335,84 @@
         android:layout_margin="8dp"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/button2"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
             android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:orientation="vertical"
             android:background="@drawable/button_backgound"
-            android:text="1" />
+            android:padding="4dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/star_button"
+                android:src="@drawable/star"/>
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/facebook_button"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
             android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:orientation="vertical"
             android:background="@drawable/button_backgound"
-            android:text="2" />
+            android:padding="4dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/facebook_button"
+                android:src="@drawable/facebook"/>
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/button4"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
             android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:orientation="vertical"
             android:background="@drawable/button_backgound"
-            android:text="3" />
+            android:padding="4dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/reset_button"
+                android:src="@drawable/reset"/>
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/button5"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
             android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:orientation="vertical"
             android:background="@drawable/button_backgound"
-            android:text="4" />
+            android:padding="4dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/facebook"/>
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/button"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
             android:layout_weight="1"
+            android:layout_margin="4dp"
+            android:orientation="vertical"
             android:background="@drawable/button_backgound"
-            android:text="5" />
+            android:padding="4dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/help"/>
+        </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>
