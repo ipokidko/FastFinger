@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 import com.a256devs.fastfinger.Dialogs.DialogMassage;
 
+import java.util.Random;
+
 import static com.a256devs.fastfinger.UiMethods.randomStringFromArray;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener {
@@ -31,6 +33,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private boolean mVolumeState = true;
     private ImageView mVolumeButton;
     private Button mFacebookButton;
+    private boolean mIsGame = false;
+
+    Random rand = new Random();
+    private int mIndexOfButton;
 
 
     ImageButton[] buttons = new ImageButton[24];
@@ -107,6 +113,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 displayCounter(mCounter);
                 countDownTimer();
                 mTimerText.setClickable(false);
+                mIsGame = true;
+                invisibleAll();
+                visible();
                 break;
             case R.id.soundButton:
                 mVolumeState = !mVolumeState;
@@ -114,8 +123,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 readAndSetResourceVolumeState();
                 break;
             case R.id.facebook_button:
-                dialog.setStyle(DialogFragment.STYLE_NO_FRAME, 0);
-                dialog.show(getFragmentManager(),"aaa");
+                dialog.show(getFragmentManager(), "aaa");
         }
 
     }
@@ -124,8 +132,13 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public boolean onTouch(View view, MotionEvent motionEvent) {
 
         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-            mCounter++;
-            displayCounter(mCounter);
+            if (mIsGame) {
+                mCounter++;
+                displayCounter(mCounter);
+                invisible(mIndexOfButton);
+                visible();
+
+            }
         }
         return false;
     }
@@ -142,6 +155,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             public void onFinish() {
                 mTimerText.setText("Try again!");
                 mTimerText.setClickable(true);
+                mIsGame = false;
+
+                invisible(mIndexOfButton);
 
                 if (mCounter > mHighScore) {
                     writeBestStore();
@@ -184,5 +200,20 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         String s = randomStringFromArray(getResources().getStringArray(R.array.tips));
         tipsTV.setText(s);
 
+    }
+
+    public void invisibleAll() {
+        for (ImageButton button : buttons) {
+            button.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    public void invisible(int index) {
+        buttons[index].setVisibility(View.INVISIBLE);
+    }
+
+    public void visible () {
+        mIndexOfButton = rand.nextInt(buttons.length);
+        buttons[mIndexOfButton].setVisibility(View.VISIBLE);
     }
 }

@@ -16,8 +16,6 @@ public class DialogMassage extends DialogFragment {
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
-
-
         builder.setView(inflater.inflate(R.layout.dialog_style, null))
                 .setPositiveButton(R.string.restart_yes, new DialogInterface.OnClickListener() {
                     @Override
