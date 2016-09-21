@@ -1,20 +1,28 @@
 package com.a256devs.fastfinger;
 
+import android.app.DialogFragment;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.a256devs.fastfinger.Dialogs.DialogMassage;
+
 import static com.a256devs.fastfinger.UiMethods.randomStringFromArray;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener {
+
+    DialogMassage dialog = new DialogMassage();
 
     int mCounter = 0;
     private TextView mScoreInfoTextView;
@@ -22,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private TextView mBestScore;
     private boolean mVolumeState = true;
     private ImageView mVolumeButton;
+    private Button mFacebookButton;
 
 
     ImageButton[] buttons = new ImageButton[24];
@@ -43,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mTimerText = (TextView) findViewById(R.id.timer);
         mBestScore = (TextView) findViewById(R.id.bestScoreNumber);
         mVolumeButton = (ImageView) findViewById(R.id.soundButton);
+        mFacebookButton = (Button) findViewById(R.id.facebook_button);
 
         // Getting SharedPreferences file or read it if exist.
         sharedPref = getSharedPreferences(getString(R.string.app_preferences), Context.MODE_PRIVATE);
@@ -80,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         mTimerText.setOnClickListener(this);
         mVolumeButton.setOnClickListener(this);
+        mFacebookButton.setOnClickListener(this);
 
 
     }
@@ -102,6 +113,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 writeVolumeState();
                 readAndSetResourceVolumeState();
                 break;
+            case R.id.facebook_button:
+                this.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+                dialog.show(getFragmentManager(),"aaa");
         }
 
     }
