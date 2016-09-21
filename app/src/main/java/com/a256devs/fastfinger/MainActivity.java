@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 readAndSetResourceVolumeState();
                 break;
             case R.id.facebook_button:
-                this.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+                dialog.setStyle(DialogFragment.STYLE_NO_FRAME, 0);
                 dialog.show(getFragmentManager(),"aaa");
         }
 
