@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import com.a256devs.fastfinger.R;
 
 public class DialogMassage extends DialogFragment {
-    public Dialog onCreateDialog(Bundle saveInstanceState) {
+        public Dialog onCreateDialog(Bundle saveInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = getActivity().getLayoutInflater();

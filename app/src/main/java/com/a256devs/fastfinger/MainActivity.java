@@ -2,9 +2,11 @@ package com.a256devs.fastfinger;
 
 import android.app.DialogFragment;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,7 +36,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private ImageView mVolumeButton;
     private ImageView mFacebookButton;
     private ImageView mResetButton;
+    private ImageView mRate;
     private boolean mIsGame = false;
+
+    Intent intent = new Intent(Intent.ACTION_VIEW);
 
     Random rand = new Random();
     private int mIndexOfButton;
@@ -44,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
-    int mHighScore;
+    private int mHighScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +66,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mVolumeButton = (ImageView) findViewById(R.id.soundButton);
         mFacebookButton = (ImageView) findViewById(R.id.facebook_button);
         mResetButton = (ImageView) findViewById(R.id.reset_button);
+        mRate = (ImageView) findViewById(R.id.rate_button);
 
         // Getting SharedPreferences file or read it if exist.
         sharedPref = getSharedPreferences(getString(R.string.app_preferences), Context.MODE_PRIVATE);
-        readAndShowBestScore();
         editor = sharedPref.edit();
 
         buttons[0] = (ImageButton) findViewById(R.id.imageView2);
@@ -100,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mVolumeButton.setOnClickListener(this);
         mFacebookButton.setOnClickListener(this);
         mResetButton.setOnClickListener(this);
+        mRate.setOnClickListener(this);
 
 
     }
@@ -126,10 +132,14 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 readAndSetResourceVolumeState();
                 break;
             case R.id.facebook_button:
-                dialog.show(getFragmentManager(), "aaa");
+                dialog.show(getFragmentManager(), "facebook");
                 break;
             case R.id.reset_button:
                 reset();
+                break;
+            case R.id.rate_button:
+                intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=air.ru.underair.city2048&hl=ru"));
+                startActivity(intent);
                 break;
         }
 
@@ -202,6 +212,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     protected void onResume() {
         super.onResume();
         readAndSetResourceVolumeState();
+        readAndShowBestScore();
 
         TextView tipsTV = (TextView) findViewById(R.id.main_tips_tv);
         String s = randomStringFromArray(getResources().getStringArray(R.array.tips));
