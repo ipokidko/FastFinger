@@ -1,11 +1,8 @@
 package com.a256devs.fastfinger;
 
-import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -13,8 +10,6 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     DialogMassage dialog = new DialogMassage();
 
     int mCounter = 0;
+    int mBonusScore;
     private TextView mScoreInfoTextView;
     private TextView mTimerText;
     private TextView mBestScore;
@@ -45,7 +41,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private int mIndexOfButton;
 
 
-    ImageButton[] buttons = new ImageButton[24];
+    TextView[] mTargetsText = new TextView[20];
+    ImageView[] mTargetsImage = new ImageView[20];
+
+    CountDownTimer mTimer;
 
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
@@ -72,33 +71,51 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         sharedPref = getSharedPreferences(getString(R.string.app_preferences), Context.MODE_PRIVATE);
         editor = sharedPref.edit();
 
-        buttons[0] = (ImageButton) findViewById(R.id.imageView2);
-        buttons[1] = (ImageButton) findViewById(R.id.imageView3);
-        buttons[2] = (ImageButton) findViewById(R.id.imageView4);
-        buttons[3] = (ImageButton) findViewById(R.id.imageView5);
-        buttons[4] = (ImageButton) findViewById(R.id.imageView6);
-        buttons[5] = (ImageButton) findViewById(R.id.imageView7);
-        buttons[6] = (ImageButton) findViewById(R.id.imageView8);
-        buttons[7] = (ImageButton) findViewById(R.id.imageView9);
-        buttons[8] = (ImageButton) findViewById(R.id.imageView10);
-        buttons[9] = (ImageButton) findViewById(R.id.imageView11);
-        buttons[10] = (ImageButton) findViewById(R.id.imageView12);
-        buttons[11] = (ImageButton) findViewById(R.id.imageView13);
-        buttons[12] = (ImageButton) findViewById(R.id.imageView14);
-        buttons[13] = (ImageButton) findViewById(R.id.imageView15);
-        buttons[14] = (ImageButton) findViewById(R.id.imageView16);
-        buttons[15] = (ImageButton) findViewById(R.id.imageView17);
-        buttons[16] = (ImageButton) findViewById(R.id.imageView18);
-        buttons[17] = (ImageButton) findViewById(R.id.imageView19);
-        buttons[18] = (ImageButton) findViewById(R.id.imageView20);
-        buttons[19] = (ImageButton) findViewById(R.id.imageView21);
-        buttons[20] = (ImageButton) findViewById(R.id.imageView22);
-        buttons[21] = (ImageButton) findViewById(R.id.imageView23);
-        buttons[22] = (ImageButton) findViewById(R.id.imageView24);
-        buttons[23] = (ImageButton) findViewById(R.id.imageView25);
+        mTargetsText[0] = (TextView) findViewById(R.id.target_timer0);
+        mTargetsText[1] = (TextView) findViewById(R.id.target_timer1);
+        mTargetsText[2] = (TextView) findViewById(R.id.target_timer2);
+        mTargetsText[3] = (TextView) findViewById(R.id.target_timer3);
+        mTargetsText[4] = (TextView) findViewById(R.id.target_timer4);
+        mTargetsText[5] = (TextView) findViewById(R.id.target_timer5);
+        mTargetsText[6] = (TextView) findViewById(R.id.target_timer6);
+        mTargetsText[7] = (TextView) findViewById(R.id.target_timer7);
+        mTargetsText[8] = (TextView) findViewById(R.id.target_timer8);
+        mTargetsText[9] = (TextView) findViewById(R.id.target_timer9);
+        mTargetsText[10] = (TextView) findViewById(R.id.target_timer10);
+        mTargetsText[11] = (TextView) findViewById(R.id.target_timer11);
+        mTargetsText[12] = (TextView) findViewById(R.id.target_timer12);
+        mTargetsText[13] = (TextView) findViewById(R.id.target_timer13);
+        mTargetsText[14] = (TextView) findViewById(R.id.target_timer14);
+        mTargetsText[15] = (TextView) findViewById(R.id.target_timer15);
+        mTargetsText[16] = (TextView) findViewById(R.id.target_timer16);
+        mTargetsText[17] = (TextView) findViewById(R.id.target_timer17);
+        mTargetsText[18] = (TextView) findViewById(R.id.target_timer18);
+        mTargetsText[19] = (TextView) findViewById(R.id.target_timer19);
 
-        for (ImageButton button : buttons) {
-            button.setOnTouchListener(this);
+        mTargetsImage[0] = (ImageView) findViewById(R.id.target0);
+        mTargetsImage[1] = (ImageView) findViewById(R.id.target1);
+        mTargetsImage[2] = (ImageView) findViewById(R.id.target2);
+        mTargetsImage[3] = (ImageView) findViewById(R.id.target3);
+        mTargetsImage[4] = (ImageView) findViewById(R.id.target4);
+        mTargetsImage[5] = (ImageView) findViewById(R.id.target5);
+        mTargetsImage[6] = (ImageView) findViewById(R.id.target6);
+        mTargetsImage[7] = (ImageView) findViewById(R.id.target7);
+        mTargetsImage[8] = (ImageView) findViewById(R.id.target8);
+        mTargetsImage[9] = (ImageView) findViewById(R.id.target9);
+        mTargetsImage[10] = (ImageView) findViewById(R.id.target10);
+        mTargetsImage[11] = (ImageView) findViewById(R.id.target11);
+        mTargetsImage[12] = (ImageView) findViewById(R.id.target12);
+        mTargetsImage[13] = (ImageView) findViewById(R.id.target13);
+        mTargetsImage[14] = (ImageView) findViewById(R.id.target14);
+        mTargetsImage[15] = (ImageView) findViewById(R.id.target15);
+        mTargetsImage[16] = (ImageView) findViewById(R.id.target16);
+        mTargetsImage[17] = (ImageView) findViewById(R.id.target17);
+        mTargetsImage[18] = (ImageView) findViewById(R.id.target18);
+        mTargetsImage[19] = (ImageView) findViewById(R.id.target19);
+
+
+        for (TextView target : mTargetsText) {
+            target.setOnTouchListener(this);
         }
 
         mTimerText.setOnClickListener(this);
@@ -108,6 +125,18 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mRate.setOnClickListener(this);
 
 
+        mTimer = new CountDownTimer(1000, 100) {
+            @Override
+            public void onTick(long l) {
+                mBonusScore = (int) (long) l / 100;
+                mTargetsText[mIndexOfButton].setText(String.valueOf(mBonusScore));
+
+            }
+            @Override
+            public void onFinish() {
+            }
+
+        };
     }
 
     public void displayCounter(int counter) {
@@ -125,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 mIsGame = true;
                 invisibleAll();
                 visible();
+                mTimer.start();
                 break;
             case R.id.soundButton:
                 mVolumeState = !mVolumeState;
@@ -150,10 +180,13 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
             if (mIsGame) {
-                mCounter++;
-                displayCounter(mCounter);
+                mTimer.cancel();
                 invisible(mIndexOfButton);
+                mCounter = (mCounter++) + mBonusScore;
+                displayCounter(mCounter);
                 visible();
+                mTimer.start();
+
 
             }
         }
@@ -183,6 +216,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             }
         }.start();
     }
+
+
+
+
 
     public void writeBestStore() {
         editor.putInt(getString(R.string.best_score), mCounter);
@@ -221,18 +258,23 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     public void invisibleAll() {
-        for (ImageButton button : buttons) {
-            button.setVisibility(View.INVISIBLE);
+        for (TextView target : mTargetsText) {
+            target.setVisibility(View.INVISIBLE);
+        }
+        for (ImageView targetImage : mTargetsImage) {
+            targetImage.setVisibility(View.INVISIBLE);
         }
     }
 
     public void invisible(int index) {
-        buttons[index].setVisibility(View.INVISIBLE);
+        mTargetsText[index].setVisibility(View.INVISIBLE);
+        mTargetsImage[index].setVisibility(View.INVISIBLE);
     }
 
     public void visible() {
-        mIndexOfButton = rand.nextInt(buttons.length);
-        buttons[mIndexOfButton].setVisibility(View.VISIBLE);
+        mIndexOfButton = rand.nextInt(mTargetsText.length);
+        mTargetsText[mIndexOfButton].setVisibility(View.VISIBLE);
+        mTargetsImage[mIndexOfButton].setVisibility(View.VISIBLE);
     }
 
     public void reset() {
