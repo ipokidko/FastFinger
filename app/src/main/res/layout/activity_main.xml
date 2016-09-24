@@ -125,6 +125,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/bottomMenu"
         android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:baselineAligned="false"
         android:orientation="horizontal">
 
@@ -134,115 +136,75 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/target_timer0"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_normal"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_margin="4dp">
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/target0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/target_button2" />
-
-                <TextView
-                    android:id="@+id/target_timer0"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="9"
-                    android:textColor="#FFFFFF"
-                    android:textSize="46sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/target_timer1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_normal"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_margin="4dp">
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/target1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/target_button2" />
-
-                <TextView
-                    android:id="@+id/target_timer1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="9"
-                    android:textColor="#FFFFFF"
-                    android:textSize="46sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/target_timer2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_normal"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_margin="4dp">
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/target2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/target_button2" />
-
-                <TextView
-                    android:id="@+id/target_timer2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="9"
-                    android:textColor="#FFFFFF"
-                    android:textSize="46sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/target_timer3"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_normal"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_margin="4dp">
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/target3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/target_button2" />
-
-                <TextView
-                    android:id="@+id/target_timer3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="9"
-                    android:textColor="#FFFFFF"
-                    android:textSize="46sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/target_timer4"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_normal"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_margin="4dp">
-
-                <ImageView
-                    android:id="@+id/target4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/target_button2" />
-
-                <TextView
-                    android:id="@+id/target_timer4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="9"
-                    android:textColor="#FFFFFF"
-                    android:textSize="46sp" />
-            </RelativeLayout>
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -252,116 +214,75 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/target_timer5"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_normal"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_margin="4dp">
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/target5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/target_button5" />
-
-                <TextView
-                    android:id="@+id/target_timer5"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="9"
-                    android:textColor="#FFFFFF"
-                    android:textSize="46sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/target_timer6"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_normal"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_margin="4dp">
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/target6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/target_button5" />
-
-                <TextView
-                    android:id="@+id/target_timer6"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="9"
-                    android:textColor="#FFFFFF"
-                    android:textSize="46sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/target_timer7"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_normal"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_margin="4dp">
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/target7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/target_button" />
-
-                <TextView
-                    android:id="@+id/target_timer7"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="9"
-                    android:textColor="#FFFFFF"
-                    android:textSize="46sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/target_timer8"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_normal"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_margin="4dp">
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/target8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/target_button" />
-
-                <TextView
-                    android:id="@+id/target_timer8"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="9"
-                    android:textColor="#FFFFFF"
-                    android:textSize="46sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/target_timer9"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_normal"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_margin="4dp">
-
-                <ImageView
-                    android:id="@+id/target9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/target_button" />
-
-                <TextView
-                    android:id="@+id/target_timer9"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="9"
-                    android:textColor="#FFFFFF"
-                    android:textSize="46sp" />
-            </RelativeLayout>
-
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -371,116 +292,75 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/target_timer10"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_normal"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_margin="4dp">
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/target10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/target_button6" />
-
-                <TextView
-                    android:id="@+id/target_timer10"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="9"
-                    android:textColor="#000"
-                    android:textSize="46sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/target_timer11"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_normal"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_margin="4dp">
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/target11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/target_button6" />
-
-                <TextView
-                    android:id="@+id/target_timer11"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="9"
-                    android:textColor="#000"
-                    android:textSize="46sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/target_timer12"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_normal"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_margin="4dp">
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/target12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/target_button3" />
-
-                <TextView
-                    android:id="@+id/target_timer12"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="9"
-                    android:textColor="#B8CBD4"
-                    android:textSize="46sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/target_timer13"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_normal"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_margin="4dp">
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/target13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/target_button3" />
-
-                <TextView
-                    android:id="@+id/target_timer13"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="9"
-                    android:textColor="#B8CBD4"
-                    android:textSize="46sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/target_timer14"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_normal"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_margin="4dp">
-
-                <ImageView
-                    android:id="@+id/target14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/target_button3" />
-
-                <TextView
-                    android:id="@+id/target_timer14"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="9"
-                    android:textColor="#B8CBD4"
-                    android:textSize="46sp" />
-            </RelativeLayout>
-
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -490,120 +370,75 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/target_timer15"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_normal"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_margin="4dp">
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/target15"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/target_button7" />
-
-                <TextView
-                    android:id="@+id/target_timer15"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="9"
-                    android:textColor="#FFFFFF"
-                    android:textSize="36sp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/target_timer16"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_normal"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_margin="4dp">
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/target16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/target_button7" />
-
-                <TextView
-                    android:id="@+id/target_timer16"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="9"
-                    android:textColor="#FFFFFF"
-                    android:textSize="36sp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/target_timer17"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_normal"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_margin="4dp">
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/target17"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/target_button4" />
-
-                <TextView
-                    android:id="@+id/target_timer17"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="9"
-                    android:textColor="#FFFFFF"
-                    android:textSize="36sp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/target_timer18"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_normal"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_margin="4dp">
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/target18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/target_button4" />
-
-                <TextView
-                    android:id="@+id/target_timer18"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="9"
-                    android:textColor="#FFFFFF"
-                    android:textSize="36sp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/target_timer19"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_margin="4dp"
+                android:background="@drawable/button_normal"
+                android:gravity="center"
                 android:layout_gravity="center"
-                android:layout_margin="4dp">
-
-                <ImageView
-                    android:id="@+id/target19"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/target_button4" />
-
-                <TextView
-                    android:id="@+id/target_timer19"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="9"
-                    android:textColor="#FFFFFF"
-                    android:textSize="36sp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
 
         </LinearLayout>
