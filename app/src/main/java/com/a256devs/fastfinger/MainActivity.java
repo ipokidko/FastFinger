@@ -153,7 +153,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.timer:
-                mSoundPool.play(mSoundId, leftVolume, rightVolume, priority, no_loop, normal_playback_rate);
+                if (mVolumeState)
+                    mSoundPool.play(mSoundId, leftVolume, rightVolume, priority, no_loop, normal_playback_rate);
                 mCounter = 0;
                 displayCounter(mCounter);
                 countDownTimer();
@@ -167,6 +168,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 mVolumeState = !mVolumeState;
                 writeVolumeState();
                 readAndSetResourceVolumeState();
+                setSoundEffectsOfButtons(mVolumeState);
                 break;
             case R.id.facebook_button:
                 dialog.show(getFragmentManager(), "facebook");
@@ -187,7 +189,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
             if (mIsGame) {
-                mSoundPool.play(mSoundId, leftVolume, rightVolume, priority, no_loop, normal_playback_rate);
+                if (mVolumeState)
+                    mSoundPool.play(mSoundId, leftVolume, rightVolume, priority, no_loop, normal_playback_rate);
                 mTimer.cancel();
                 invisible(mIndexOfButton);
                 mCounter = (mCounter++) + mBonusScore;
@@ -257,6 +260,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     protected void onResume() {
         super.onResume();
         readAndSetResourceVolumeState();
+        setSoundEffectsOfButtons(mVolumeState);
         readAndShowBestScore();
 
         TextView tipsTV = (TextView) findViewById(R.id.main_tips_tv);
@@ -284,6 +288,13 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         editor.putInt(getString(R.string.best_score), 0);
         editor.commit();
         readAndShowBestScore();
+    }
+
+    public void setSoundEffectsOfButtons (boolean state) {
+        mFacebookButton.setSoundEffectsEnabled(state);
+        mResetButton.setSoundEffectsEnabled(state);
+        mTimerText.setSoundEffectsEnabled(state);
+        mRate.setSoundEffectsEnabled(state);
     }
 
     @Override
