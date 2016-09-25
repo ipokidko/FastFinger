@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         setContentView(R.layout.activity_main);
 
         mSoundPool = new SoundPool(4, AudioManager.STREAM_MUSIC, 100);
-        mSoundPool.load(this, R.raw.base, 1);
+        mSoundPool.load(this, R.raw.base , 1);
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         curVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
         maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
