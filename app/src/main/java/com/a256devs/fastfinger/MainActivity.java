@@ -3,6 +3,8 @@ package com.a256devs.fastfinger;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.net.Uri;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -42,13 +44,24 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
 
     TextView[] mTargetsText = new TextView[20];
-    ImageView[] mTargetsImage = new ImageView[20];
 
     CountDownTimer mTimer;
 
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
     private int mHighScore;
+
+    private SoundPool mSoundPool;
+    private int mSoundId = 1;
+    private int mStreamId;
+    AudioManager audioManager;
+    float curVolume;
+    float maxVolume;
+    float leftVolume;
+    float rightVolume;
+    int priority;
+    int no_loop;
+    float normal_playback_rate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +71,18 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         setContentView(R.layout.activity_main);
+
+        mSoundPool = new SoundPool(4, AudioManager.STREAM_MUSIC, 100);
+        mSoundPool.load(this, R.raw.base, 1);
+        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        curVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        leftVolume = curVolume / maxVolume;
+        rightVolume = curVolume / maxVolume;
+        priority = 1;
+        no_loop = 0;
+        normal_playback_rate = 1f;
+
 
         mScoreInfoTextView = (TextView) findViewById(R.id.scoreNumber);
         mTimerText = (TextView) findViewById(R.id.timer);
@@ -92,26 +117,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mTargetsText[18] = (TextView) findViewById(R.id.target_timer18);
         mTargetsText[19] = (TextView) findViewById(R.id.target_timer19);
 
-        mTargetsImage[0] = (ImageView) findViewById(R.id.target0);
-        mTargetsImage[1] = (ImageView) findViewById(R.id.target1);
-        mTargetsImage[2] = (ImageView) findViewById(R.id.target2);
-        mTargetsImage[3] = (ImageView) findViewById(R.id.target3);
-        mTargetsImage[4] = (ImageView) findViewById(R.id.target4);
-        mTargetsImage[5] = (ImageView) findViewById(R.id.target5);
-        mTargetsImage[6] = (ImageView) findViewById(R.id.target6);
-        mTargetsImage[7] = (ImageView) findViewById(R.id.target7);
-        mTargetsImage[8] = (ImageView) findViewById(R.id.target8);
-        mTargetsImage[9] = (ImageView) findViewById(R.id.target9);
-        mTargetsImage[10] = (ImageView) findViewById(R.id.target10);
-        mTargetsImage[11] = (ImageView) findViewById(R.id.target11);
-        mTargetsImage[12] = (ImageView) findViewById(R.id.target12);
-        mTargetsImage[13] = (ImageView) findViewById(R.id.target13);
-        mTargetsImage[14] = (ImageView) findViewById(R.id.target14);
-        mTargetsImage[15] = (ImageView) findViewById(R.id.target15);
-        mTargetsImage[16] = (ImageView) findViewById(R.id.target16);
-        mTargetsImage[17] = (ImageView) findViewById(R.id.target17);
-        mTargetsImage[18] = (ImageView) findViewById(R.id.target18);
-        mTargetsImage[19] = (ImageView) findViewById(R.id.target19);
 
 
         for (TextView target : mTargetsText) {
@@ -147,6 +152,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.timer:
+                mSoundPool.play(mSoundId, leftVolume, rightVolume, priority, no_loop, normal_playback_rate);
                 mCounter = 0;
                 displayCounter(mCounter);
                 countDownTimer();
@@ -180,6 +186,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
             if (mIsGame) {
+                mSoundPool.play(mSoundId, leftVolume, rightVolume, priority, no_loop, normal_playback_rate);
                 mTimer.cancel();
                 invisible(mIndexOfButton);
                 mCounter = (mCounter++) + mBonusScore;
@@ -261,20 +268,15 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         for (TextView target : mTargetsText) {
             target.setVisibility(View.INVISIBLE);
         }
-        for (ImageView targetImage : mTargetsImage) {
-            targetImage.setVisibility(View.INVISIBLE);
-        }
     }
 
     public void invisible(int index) {
         mTargetsText[index].setVisibility(View.INVISIBLE);
-        mTargetsImage[index].setVisibility(View.INVISIBLE);
     }
 
     public void visible() {
         mIndexOfButton = rand.nextInt(mTargetsText.length);
         mTargetsText[mIndexOfButton].setVisibility(View.VISIBLE);
-        mTargetsImage[mIndexOfButton].setVisibility(View.VISIBLE);
     }
 
     public void reset() {
