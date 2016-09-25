@@ -26,7 +26,9 @@ import static com.a256devs.fastfinger.UiMethods.randomStringFromArray;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener, ShareDialog.ShareYesListener, FacebookDialog.FacebookYesListener, ResetScoreDialog.ResetScoreYesListener {
 
-    FacebookDialog dialog = new FacebookDialog();
+    FacebookDialog facebookDialog = new FacebookDialog();
+    ResetScoreDialog resetScoreDialog = new ResetScoreDialog();
+    ShareDialog shareDialog = new ShareDialog();
 
     int mCounter = 0;
     int mBonusScore;
@@ -173,14 +175,13 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 setSoundEffectsOfButtons(mVolumeState);
                 break;
             case R.id.facebook_button:
-                dialog.show(getFragmentManager(), "facebook");
+                facebookDialog.show(getFragmentManager(), "facebook");
                 break;
             case R.id.reset_button:
-                reset();
+                resetScoreDialog.show(getFragmentManager(), "resetScore");
                 break;
             case R.id.rate_button:
-                intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=air.ru.underair.city2048&hl=ru"));
-                startActivity(intent);
+                shareDialog.show(getFragmentManager(), "rate app");
                 break;
         }
 
@@ -283,11 +284,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mTargetsText[mIndexOfButton].setVisibility(View.VISIBLE);
     }
 
-    public void reset() {
-        editor.putInt(getString(R.string.best_score), 0);
-        editor.commit();
-        readAndShowBestScore();
-    }
 
     public void setSoundEffectsOfButtons(boolean state) {
         mFacebookButton.setSoundEffectsEnabled(state);
@@ -303,11 +299,14 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     @Override
     public void onResetScorePositiveClick(DialogFragment dialog) {
-
+        editor.putInt(getString(R.string.best_score), 0);
+        editor.commit();
+        readAndShowBestScore();
     }
 
     @Override
     public void onSharePositiveClick(DialogFragment dialog) {
-        
+        intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=air.ru.underair.city2048&hl=ru"));
+        startActivity(intent);
     }
 }
