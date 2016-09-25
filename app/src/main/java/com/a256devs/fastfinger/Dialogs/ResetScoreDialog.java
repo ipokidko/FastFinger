@@ -12,10 +12,10 @@ import android.widget.TextView;
 
 import com.a256devs.fastfinger.R;
 
-public class ResetScoreDialog extends DialogFragment {
+public class ResetScoreDialog extends DialogFragment implements View.OnClickListener {
 
     public interface ResetScoreYesListener {
-        public void onResetScorePositiveClick(DialogFragment dialog);
+        void onResetScorePositiveClick(DialogFragment dialog);
     }
 
     ResetScoreYesListener mListener;
@@ -43,6 +43,21 @@ public class ResetScoreDialog extends DialogFragment {
         ((TextView) dialog.findViewById(R.id.yes_no_dialog_tv)).setText(getResources().getText(R.string.reset_score_dialog_text));
 
         return builder.create();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.yes_no_dialog_no_button:
+                dismiss();
+                break;
+            case R.id.yes_no_dialog_yes_button:
+                mListener.onResetScorePositiveClick(this);
+                dismiss();
+                break;
+
+        }
+
     }
 
 }

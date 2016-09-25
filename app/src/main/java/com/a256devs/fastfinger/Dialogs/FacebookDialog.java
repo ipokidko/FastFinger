@@ -13,15 +13,11 @@ import android.widget.TextView;
 
 import com.a256devs.fastfinger.R;
 
-public class FacebookDialog extends DialogFragment implements View.OnTouchListener {
+public class FacebookDialog extends DialogFragment implements View.OnClickListener {
 
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        return false;
-    }
 
     public interface FacebookYesListener {
-        public void onFacebookPositiveClick(DialogFragment dialog);
+        void onFacebookPositiveClick(DialogFragment dialog);
     }
 
     FacebookYesListener mListener;
@@ -51,4 +47,18 @@ public class FacebookDialog extends DialogFragment implements View.OnTouchListen
         return builder.create();
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.yes_no_dialog_no_button:
+                dismiss();
+                break;
+            case R.id.yes_no_dialog_yes_button:
+                mListener.onFacebookPositiveClick(this);
+                dismiss();
+                break;
+
+        }
+
+    }
 }

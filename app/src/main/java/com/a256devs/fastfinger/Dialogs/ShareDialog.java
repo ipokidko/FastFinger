@@ -12,10 +12,10 @@ import android.widget.TextView;
 
 import com.a256devs.fastfinger.R;
 
-public class ShareDialog extends DialogFragment {
+public class ShareDialog extends DialogFragment implements View.OnClickListener {
 
     public interface ShareYesListener {
-        public void onSharePositiveClick(DialogFragment dialog);
+        void onSharePositiveClick(DialogFragment dialog);
     }
 
     ShareYesListener mListener;
@@ -45,4 +45,18 @@ public class ShareDialog extends DialogFragment {
         return builder.create();
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.yes_no_dialog_no_button:
+                dismiss();
+                break;
+            case R.id.yes_no_dialog_yes_button:
+                mListener.onSharePositiveClick(this);
+                dismiss();
+                break;
+
+        }
+
+    }
 }
