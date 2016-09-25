@@ -1,5 +1,6 @@
 package com.a256devs.fastfinger;
 
+import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,7 +22,7 @@ import java.util.Random;
 
 import static com.a256devs.fastfinger.UiMethods.randomStringFromArray;
 
-public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener, DialogMessage.FacebookYesListener{
 
     DialogMessage dialog = new DialogMessage();
 
@@ -283,5 +284,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         editor.putInt(getString(R.string.best_score), 0);
         editor.commit();
         readAndShowBestScore();
+    }
+
+    @Override
+    public void onFacebookPositiveClick(DialogFragment dialog) {
+
     }
 }

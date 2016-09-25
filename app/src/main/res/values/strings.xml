@@ -7,9 +7,9 @@
     <string name="best">BEST</string>
     <string name="start">START</string>
     <string name="restart">Хотите начать сначала?</string>
-    <string name="restart_yes">ДА</string>
-    <string name="restart_no">НЕТ</string>
-    <string name="facebook_dialog_text">Поделиться результатом на Facebook?</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="facebook_dialog_text">Share result on Facebook</string>
 
     <string-array name="tips">
         <item>Try faster!</item>

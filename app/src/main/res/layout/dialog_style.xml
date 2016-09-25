@@ -1,17 +1,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/dialog_backdround"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:padding="24dp">
-
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="@string/facebook_dialog_text"
-        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:text="Dialog Text"
         android:textColor="@color/background_color"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/yes" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no" />
+    </LinearLayout>
+
 </LinearLayout>
