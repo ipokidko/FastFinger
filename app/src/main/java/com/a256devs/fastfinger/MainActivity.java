@@ -15,7 +15,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.a256devs.fastfinger.Dialogs.DialogMassage;
+import com.a256devs.fastfinger.Dialogs.DialogMessage;
 
 import java.util.Random;
 
@@ -23,7 +23,7 @@ import static com.a256devs.fastfinger.UiMethods.randomStringFromArray;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener {
 
-    DialogMassage dialog = new DialogMassage();
+    DialogMessage dialog = new DialogMessage();
 
     int mCounter = 0;
     int mBonusScore;
