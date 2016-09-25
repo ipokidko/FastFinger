@@ -12,8 +12,9 @@
     <string name="facebook_dialog_text">Share result on Facebook</string>
 
     <string-array name="tips">
-        <item>Try faster!</item>
-        <item>You can better!</item>
-        <item>Good work :)</item>
+        <item>Be the fastest!</item>
+        <item>Train your speed!</item>
+        <item>What is your best result?</item>
+        <item>Good :)</item>
     </string-array>
 </resources>
