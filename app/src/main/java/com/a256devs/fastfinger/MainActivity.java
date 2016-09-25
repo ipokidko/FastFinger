@@ -17,12 +17,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.a256devs.fastfinger.Dialogs.FacebookDialog;
+import com.a256devs.fastfinger.Dialogs.ResetScoreDialog;
+import com.a256devs.fastfinger.Dialogs.ShareDialog;
 
 import java.util.Random;
 
 import static com.a256devs.fastfinger.UiMethods.randomStringFromArray;
 
-public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener, FacebookDialog.FacebookYesListener{
+public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener, ShareDialog.ShareYesListener, FacebookDialog.FacebookYesListener, ResetScoreDialog.ResetScoreYesListener {
 
     FacebookDialog dialog = new FacebookDialog();
 
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         setContentView(R.layout.activity_main);
 
         mSoundPool = new SoundPool(4, AudioManager.STREAM_MUSIC, 100);
-        mSoundPool.load(this, R.raw.base , 1);
+        mSoundPool.load(this, R.raw.base, 1);
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         curVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
         maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
@@ -119,7 +121,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mTargetsText[19] = (TextView) findViewById(R.id.target_timer19);
 
 
-
         for (TextView target : mTargetsText) {
             target.setOnTouchListener(this);
         }
@@ -138,6 +139,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 mTargetsText[mIndexOfButton].setText(String.valueOf(mBonusScore));
 
             }
+
             @Override
             public void onFinish() {
             }
@@ -229,9 +231,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
 
-
-
-
     public void writeBestStore() {
         editor.putInt(getString(R.string.best_score), mCounter);
         editor.commit();
@@ -290,7 +289,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         readAndShowBestScore();
     }
 
-    public void setSoundEffectsOfButtons (boolean state) {
+    public void setSoundEffectsOfButtons(boolean state) {
         mFacebookButton.setSoundEffectsEnabled(state);
         mResetButton.setSoundEffectsEnabled(state);
         mTimerText.setSoundEffectsEnabled(state);
@@ -300,5 +299,15 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     @Override
     public void onFacebookPositiveClick(DialogFragment dialog) {
 
+    }
+
+    @Override
+    public void onResetScorePositiveClick(DialogFragment dialog) {
+
+    }
+
+    @Override
+    public void onSharePositiveClick(DialogFragment dialog) {
+        
     }
 }
