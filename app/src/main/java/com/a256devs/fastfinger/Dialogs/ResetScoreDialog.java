@@ -20,28 +20,16 @@ public class ResetScoreDialog extends DialogFragment implements View.OnClickList
 
     ResetScoreYesListener mListener;
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-        try {
-            // Instantiate the NoticeDialogListener so we can send events to the host
-            mListener = (ResetScoreYesListener) context;
-        } catch (ClassCastException e) {
-            // The activity doesn't implement the interface, throw exception
-            throw new ClassCastException(context.toString()
-                    + " must implement NoticeDialogListener");
-        }
-    }
-
-
     public Dialog onCreateDialog(Bundle saveInstanceState) {
+        mListener = (ResetScoreYesListener) getActivity();
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View dialog = inflater.inflate(R.layout.yes_no_dialog, null);
         builder.setView(dialog);
         ((TextView) dialog.findViewById(R.id.yes_no_dialog_tv)).setText(getResources().getText(R.string.reset_score_dialog_text));
-
+        dialog.findViewById(R.id.yes_no_dialog_yes_button).setOnClickListener(this);
+        dialog.findViewById(R.id.yes_no_dialog_no_button).setOnClickListener(this);
         return builder.create();
     }
 
