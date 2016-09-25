@@ -5,15 +5,16 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
 
 import com.a256devs.fastfinger.R;
 
-public class DialogMessage extends DialogFragment {
+public class FacebookDialog extends DialogFragment {
 
-    public interface FacebookYesListener{
+    public interface FacebookYesListener {
         public void onFacebookPositiveClick(DialogFragment dialog);
     }
 
@@ -34,14 +35,12 @@ public class DialogMessage extends DialogFragment {
     }
 
 
-
-        public Dialog onCreateDialog(Bundle saveInstanceState) {
+    public Dialog onCreateDialog(Bundle saveInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
         LayoutInflater inflater = getActivity().getLayoutInflater();
-
-        builder.setView(inflater.inflate(R.layout.dialog_style, null));
-
+        View dialog = inflater.inflate(R.layout.yes_no_dialog, null);
+        builder.setView(dialog);
+        ((TextView) dialog.findViewById(R.id.yes_no_dialog_tv)).setText(getResources().getText(R.string.facebook_dialog_text));
 
         return builder.create();
     }

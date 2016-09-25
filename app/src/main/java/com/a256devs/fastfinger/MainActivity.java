@@ -16,15 +16,15 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.a256devs.fastfinger.Dialogs.DialogMessage;
+import com.a256devs.fastfinger.Dialogs.FacebookDialog;
 
 import java.util.Random;
 
 import static com.a256devs.fastfinger.UiMethods.randomStringFromArray;
 
-public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener, DialogMessage.FacebookYesListener{
+public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener, FacebookDialog.FacebookYesListener{
 
-    DialogMessage dialog = new DialogMessage();
+    FacebookDialog dialog = new FacebookDialog();
 
     int mCounter = 0;
     int mBonusScore;
