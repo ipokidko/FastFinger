@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color"
-    tools:context="com.a256devs.friendsbattles.com.a256devs.friendsbattles.MainActivity">
+    tools:context="com.a256devs.friendsbattles.MainActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout2"

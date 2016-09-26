@@ -306,7 +306,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     @Override
     public void onSharePositiveClick(DialogFragment dialog) {
-        intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=air.ru.underair.city2048&hl=ru"));
+        intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.a256devs.friendsbattles"));
         startActivity(intent);
     }
 }
