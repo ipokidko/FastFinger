@@ -5,43 +5,28 @@
     android:orientation="vertical"
     android:padding="16dp">
     <TextView
-        android:id="@+id/yes_no_dialog_tv"
+        android:id="@+id/help_dialog_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:gravity="center"
         android:text="Dialog Text"
         android:textColor="@color/background_color"
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp">
 
         <Button
-            android:id="@+id/yes_no_dialog_yes_button"
+            android:id="@+id/help_dialog_ok_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_background"
             android:textColor="@color/background_color"
+            android:layout_gravity="center_horizontal"
             android:textStyle="bold"
             android:textSize="16sp"
-            android:layout_margin="8dp"
-            android:text="@string/yes" />
+            android:layout_marginTop="16dp"
+            android:text="@string/ok" />
 
-        <Button
-            android:id="@+id/yes_no_dialog_no_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_background"
-            android:textColor="@color/background_color"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_margin="8dp"
-            android:text="@string/no" />
-    </LinearLayout>
 
 </LinearLayout>
