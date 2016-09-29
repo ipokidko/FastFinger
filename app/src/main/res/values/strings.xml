@@ -9,9 +9,15 @@
     <string name="restart">Хотите начать сначала?</string>
     <string name="yes">YES</string>
     <string name="no">NO</string>
+    <string name="ok">OK</string>
+    <string name="reset">RESET</string>
+    <string name="save">SAVE</string>
+    <string name="cancel">CANCEL</string>
     <string name="facebook_dialog_text">Share result on Facebook</string>
     <string name="rate_dialog_text">Rate the app</string>
     <string name="reset_score_dialog_text">Reset best result</string>
+    <string name="help_dialog_text">Click on the button "START" and catch as much as possible circles with numbers inside for 15 seconds!</string>
+
 
     <string-array name="tips">
         <item>Be the fastest!</item>

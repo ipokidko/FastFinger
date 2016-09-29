@@ -10,6 +10,8 @@ import android.net.Uri;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -17,18 +19,28 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.a256devs.friendsbattles.Dialogs.FacebookDialog;
+import com.a256devs.friendsbattles.Dialogs.HelpDialog;
 import com.a256devs.friendsbattles.Dialogs.ResetScoreDialog;
+import com.a256devs.friendsbattles.Dialogs.SettingsDialog;
 import com.a256devs.friendsbattles.Dialogs.ShareDialog;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+
+
 
 import static com.a256devs.friendsbattles.UiMethods.randomStringFromArray;
 
-public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener, ShareDialog.ShareYesListener, FacebookDialog.FacebookYesListener, ResetScoreDialog.ResetScoreYesListener {
+public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener, ShareDialog.ShareYesListener, FacebookDialog.FacebookYesListener, ResetScoreDialog.ResetScoreYesListener, SettingsDialog.SettingsListener {
 
     FacebookDialog facebookDialog = new FacebookDialog();
     ResetScoreDialog resetScoreDialog = new ResetScoreDialog();
     ShareDialog shareDialog = new ShareDialog();
+    HelpDialog helpDialog = new HelpDialog();
+    SettingsDialog settingsDialog = new SettingsDialog();
+
+
 
     int mCounter = 0;
     int mBonusScore;
@@ -39,7 +51,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private ImageView mVolumeButton;
     private ImageView mFacebookButton;
     private ImageView mResetButton;
-    private ImageView mRate;
+    private ImageView mRateButton;
+    private ImageView mHelpButton;
+    private ImageView mSettingsButton;
     private boolean mIsGame = false;
 
     Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -77,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         setContentView(R.layout.activity_main);
 
+
         mSoundPool = new SoundPool(4, AudioManager.STREAM_MUSIC, 100);
         mSoundPool.load(this, R.raw.base, 1);
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
@@ -95,11 +110,14 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mVolumeButton = (ImageView) findViewById(R.id.soundButton);
         mFacebookButton = (ImageView) findViewById(R.id.facebook_button);
         mResetButton = (ImageView) findViewById(R.id.reset_button);
-        mRate = (ImageView) findViewById(R.id.rate_button);
+        mRateButton = (ImageView) findViewById(R.id.rate_button);
+        mHelpButton = (ImageView) findViewById(R.id.help_button);
+        mSettingsButton = (ImageView) findViewById(R.id.settings_button);
 
         // Getting SharedPreferences file or read it if exist.
         sharedPref = getSharedPreferences(getString(R.string.app_preferences), Context.MODE_PRIVATE);
         editor = sharedPref.edit();
+
 
         mTargetsText[0] = (TextView) findViewById(R.id.target_timer0);
         mTargetsText[1] = (TextView) findViewById(R.id.target_timer1);
@@ -131,7 +149,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mVolumeButton.setOnClickListener(this);
         mFacebookButton.setOnClickListener(this);
         mResetButton.setOnClickListener(this);
-        mRate.setOnClickListener(this);
+        mRateButton.setOnClickListener(this);
+        mHelpButton.setOnClickListener(this);
+        mSettingsButton.setOnClickListener(this);
 
 
         mTimer = new CountDownTimer(1000, 100) {
@@ -182,6 +202,14 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 break;
             case R.id.rate_button:
                 shareDialog.show(getFragmentManager(), "rate app");
+                break;
+            case R.id.help_button:
+                helpDialog.show(getFragmentManager(), "help app");
+                break;
+            case R.id.settings_button:
+                settingsDialog.show(getFragmentManager(), "settings app");
+
+
                 break;
         }
 
@@ -254,6 +282,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         } else {
             mVolumeButton.setImageResource(R.drawable.volume_off);
         }
+
+
     }
 
     @Override
@@ -289,7 +319,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mFacebookButton.setSoundEffectsEnabled(state);
         mResetButton.setSoundEffectsEnabled(state);
         mTimerText.setSoundEffectsEnabled(state);
-        mRate.setSoundEffectsEnabled(state);
+        mRateButton.setSoundEffectsEnabled(state);
     }
 
     @Override
@@ -309,4 +339,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.a256devs.friendsbattles"));
         startActivity(intent);
     }
+
+    @Override
+    public void onSettingsClick(DialogFragment dialog) {
+
+    }
 }
+
+
