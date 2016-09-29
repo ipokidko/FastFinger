@@ -10,6 +10,8 @@ import android.net.Uri;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -22,7 +24,11 @@ import com.a256devs.friendsbattles.Dialogs.ResetScoreDialog;
 import com.a256devs.friendsbattles.Dialogs.SettingsDialog;
 import com.a256devs.friendsbattles.Dialogs.ShareDialog;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+
+
 
 import static com.a256devs.friendsbattles.UiMethods.randomStringFromArray;
 
@@ -33,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     ShareDialog shareDialog = new ShareDialog();
     HelpDialog helpDialog = new HelpDialog();
     SettingsDialog settingsDialog = new SettingsDialog();
+
+
 
     int mCounter = 0;
     int mBonusScore;
@@ -83,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
         setContentView(R.layout.activity_main);
 
+
         mSoundPool = new SoundPool(4, AudioManager.STREAM_MUSIC, 100);
         mSoundPool.load(this, R.raw.base, 1);
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
@@ -108,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         // Getting SharedPreferences file or read it if exist.
         sharedPref = getSharedPreferences(getString(R.string.app_preferences), Context.MODE_PRIVATE);
         editor = sharedPref.edit();
+
 
         mTargetsText[0] = (TextView) findViewById(R.id.target_timer0);
         mTargetsText[1] = (TextView) findViewById(R.id.target_timer1);
@@ -198,6 +208,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 break;
             case R.id.settings_button:
                 settingsDialog.show(getFragmentManager(), "settings app");
+
+
                 break;
         }
 
@@ -270,6 +282,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         } else {
             mVolumeButton.setImageResource(R.drawable.volume_off);
         }
+
+
     }
 
     @Override
@@ -331,3 +345,5 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     }
 }
+
+

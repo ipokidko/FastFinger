@@ -5,11 +5,17 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
 import com.a256devs.friendsbattles.R;
+import com.a256devs.friendsbattles.SettingsAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by user on 27.09.2016.
@@ -24,6 +30,10 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
 
     SettingsListener mListener;
 
+    private List<String> stringsList = new ArrayList<>();
+    private RecyclerView recyclerView;
+    private SettingsAdapter mAdapter;
+
 
     public Dialog onCreateDialog(Bundle saveInstanceState) {
         mListener = (SettingsListener) getActivity();
@@ -35,6 +45,17 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
         dialog.findViewById(R.id.settings_dialog_reset_button).setOnClickListener(this);
         dialog.findViewById(R.id.settings_dialog_save_button).setOnClickListener(this);
         dialog.findViewById(R.id.settings_dialog_cancel_button).setOnClickListener(this);
+
+        recyclerView = (RecyclerView) dialog.findViewById(R.id.recycler_view);
+
+        mAdapter = new SettingsAdapter(stringsList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(mLayoutManager);
+        //recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapter);
+
+        prepareSettingsData();
+
         return builder.create();
     }
 
@@ -54,5 +75,16 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
                 break;
         }
     }
+
+    private void prepareSettingsData() {
+
+        for (int i = 0; i < 10; i++) {
+            String s = "" + i;
+            stringsList.add(s);
+        }
+
+        mAdapter.notifyDataSetChanged();
+    }
 }
+
 
