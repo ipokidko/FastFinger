@@ -10,7 +10,9 @@
     <string name="yes">YES</string>
     <string name="no">NO</string>
     <string name="ok">OK</string>
-    <string name="reset">RESET</string>
+    <string name="reset_to_default">RESET TO DEFAULT</string>
+    <string name="set_this_color">SET THIS COLOR</string>
+
     <string name="save">SAVE</string>
     <string name="cancel">CANCEL</string>
     <string name="facebook_dialog_text">Share result on Facebook</string>

@@ -11,9 +11,6 @@ import android.widget.TextView;
 
 import com.a256devs.friendsbattles.R;
 
-/**
- * Created by user on 27.09.2016.
- */
 
 public class HelpDialog extends DialogFragment implements View.OnClickListener {
 
