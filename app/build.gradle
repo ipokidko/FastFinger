@@ -1,14 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-        config {
-            keyAlias '256DevsApps'
-            keyPassword 'barsik'
-            storeFile file('E:/OneDrive/igor_keys.jks')
-            storePassword 'barsik777'
-        }
-    }
+
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
     defaultConfig {
@@ -22,7 +15,6 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.config
         }
     }
 }
@@ -35,7 +27,7 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:design:24.2.1'
-    compile 'com.android.support:recyclerview-v7:23.1.1'
+    compile 'com.android.support:recyclerview-v7:24.2.1'
     testCompile 'junit:junit:4.12'
 
 }
