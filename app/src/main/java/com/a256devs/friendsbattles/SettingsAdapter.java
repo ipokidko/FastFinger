@@ -1,16 +1,18 @@
 package com.a256devs.friendsbattles;
 
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.MyViewHolder> {
 
-    private List<String> stringsList;
+    private ArrayList<Integer> colorList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView textView;
@@ -23,27 +25,32 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.MyView
 
 
 
-    public SettingsAdapter(List<String> stringsList) {
-        this.stringsList = stringsList;
+    public SettingsAdapter(ArrayList<Integer> colorList) {
+        this.colorList = colorList;
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.settings_list_row, parent, false);
-
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        String string = stringsList.get(position);
-        holder.textView.setText(String.valueOf(position));
+        holder.textView.setText("9");
+        holder.textView.setTextColor(colorList.get(position));
+
+        GradientDrawable newBackground = new GradientDrawable();
+        newBackground.setStroke(5,colorList.get(position));
+        newBackground.setColor(Color.WHITE);
+
+        holder.textView.setBackground(newBackground);
 
     }
 
     @Override
     public int getItemCount() {
-        return stringsList.size();
+        return colorList.size();
     }
 }

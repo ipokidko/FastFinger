@@ -3,13 +3,12 @@ package com.a256devs.friendsbattles.Dialogs;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
 
 import com.a256devs.friendsbattles.R;
 import com.a256devs.friendsbattles.SettingsAdapter;
@@ -30,7 +29,7 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
 
     SettingsListener mListener;
 
-    private List<String> stringsList = new ArrayList<>();
+    private ArrayList<Integer> colorsArrayList = new ArrayList<>();
     private RecyclerView recyclerView;
     private SettingsAdapter mAdapter;
 
@@ -48,13 +47,14 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
 
         recyclerView = (RecyclerView) dialog.findViewById(R.id.recycler_view);
 
-        mAdapter = new SettingsAdapter(stringsList);
+        mAdapter = new SettingsAdapter(colorsArrayList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
         //recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
-        prepareSettingsData();
+        addColorsToDataForAdapter();
+        mAdapter.notifyDataSetChanged();
 
         return builder.create();
     }
@@ -76,14 +76,16 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
         }
     }
 
-    private void prepareSettingsData() {
-
-        for (int i = 0; i < 10; i++) {
-            String s = "" + i;
-            stringsList.add(s);
-        }
-
-        mAdapter.notifyDataSetChanged();
+    private void addColorsToDataForAdapter() {
+        colorsArrayList.add(Color.RED);
+        colorsArrayList.add(Color.BLUE);
+        colorsArrayList.add(Color.GREEN);
+        colorsArrayList.add(Color.YELLOW);
+        colorsArrayList.add(Color.LTGRAY);
+        colorsArrayList.add(Color.GRAY);
+        colorsArrayList.add(Color.DKGRAY);
+        colorsArrayList.add(Color.MAGENTA);
+        colorsArrayList.add(Color.CYAN);
     }
 }
 
