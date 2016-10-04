@@ -32,7 +32,6 @@ import java.util.List;
 import java.util.Random;
 
 
-
 import static com.a256devs.friendsbattles.UiMethods.randomStringFromArray;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener, ShareDialog.ShareYesListener, FacebookDialog.FacebookYesListener, ResetScoreDialog.ResetScoreYesListener, SettingsDialog.SettingsListener {
@@ -42,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     ShareDialog shareDialog = new ShareDialog();
     HelpDialog helpDialog = new HelpDialog();
     SettingsDialog settingsDialog = new SettingsDialog();
-
 
 
     int mCounter = 0;
@@ -58,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private ImageView mHelpButton;
     private ImageView mSettingsButton;
     private boolean mIsGame = false;
+
+    public int color = Color.RED;
 
     Intent intent = new Intent(Intent.ACTION_VIEW);
 
@@ -148,6 +148,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             target.setOnTouchListener(this);
         }
 
+        readAndSetColor();
+
         mTimerText.setOnClickListener(this);
         mVolumeButton.setOnClickListener(this);
         mFacebookButton.setOnClickListener(this);
@@ -210,6 +212,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 helpDialog.show(getFragmentManager(), "help app");
                 break;
             case R.id.settings_button:
+
+
                 settingsDialog.show(getFragmentManager(), "settings app");
 
 
@@ -276,6 +280,24 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public void readAndShowBestScore() {
         mHighScore = sharedPref.getInt(getString(R.string.best_score), mCounter);
         mBestScore.setText(String.valueOf(mHighScore));
+    }
+
+    public void writeColor(int selectedColor) {
+        editor.putInt(getString(R.string.color_state), selectedColor);
+        editor.commit();
+    }
+
+    public void readAndSetColor() {
+        color = sharedPref.getInt(getString(R.string.color_state), color);
+
+        for (TextView target : mTargetsText) {
+            GradientDrawable currentBackground = new GradientDrawable();
+            currentBackground.setShape(GradientDrawable.OVAL);
+            currentBackground.setStroke(7, color);
+            currentBackground.setColor(Color.WHITE);
+            target.setBackground(currentBackground);
+            target.setTextColor(color);
+        }
     }
 
     public void readAndSetResourceVolumeState() {

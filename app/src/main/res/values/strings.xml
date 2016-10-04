@@ -3,6 +3,7 @@
     <string name="best_score">score</string>
     <string name="app_preferences">mySettings</string>
     <string name="volume_state">volumeState</string>
+    <string name="color_state">colorState</string>
     <string name="score">SCORE</string>
     <string name="best">BEST</string>
     <string name="start">START</string>
@@ -10,8 +11,8 @@
     <string name="yes">YES</string>
     <string name="no">NO</string>
     <string name="ok">OK</string>
-    <string name="reset_to_default">RESET TO DEFAULT</string>
-    <string name="set_this_color">SET THIS COLOR</string>
+    <string name="reset_to_default">DEFAULT</string>
+    <string name="set_this_color">SET COLOR</string>
 
     <string name="save">SAVE</string>
     <string name="cancel">CANCEL</string>

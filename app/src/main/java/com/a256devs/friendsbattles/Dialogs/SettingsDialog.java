@@ -4,30 +4,56 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
+
 
 import com.a256devs.friendsbattles.R;
 import com.a256devs.friendsbattles.SettingsAdapter;
 
 import java.util.ArrayList;
 
+import com.a256devs.friendsbattles.MainActivity;
+
 
 public class SettingsDialog extends DialogFragment implements View.OnClickListener, SettingsAdapter.OnItemClick {
 
 
+    TextView currentText;
+    TextView selectedText;
+    View dialog;
+    MainActivity mainActivity;
+    int selectedColor;
+    int defaultColor = R.color.red;
+
     @Override
     public void onItemClickListener(int color) {
         //On color int color pressed
-        Log.v("flow", "Red: " + Color.RED + " Yellow: " + Color.YELLOW + " tape: " + color);
+        Log.v("flow", "Color " + color);
+
+        selectedColor = color;
+        selectedText = (TextView) dialog.findViewById(R.id.settings_selected_tv);
+
+        GradientDrawable currentBackground = new GradientDrawable();
+        currentBackground.setShape(GradientDrawable.OVAL);
+        currentBackground.setStroke(7, color);
+        currentBackground.setColor(Color.WHITE);
+
+        selectedText.setBackground(currentBackground);
+        selectedText.setTextColor(color);
+
+
     }
 
     public interface SettingsListener {
         void onSettingsClickReset(DialogFragment dialog);
+
         void onSettingsClickChangeItemColor(DialogFragment dialog);
     }
 
@@ -39,10 +65,10 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
 
     public Dialog onCreateDialog(Bundle saveInstanceState) {
         mListener = (SettingsListener) getActivity();
-
+        mainActivity = (MainActivity) getActivity();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View dialog = inflater.inflate(R.layout.settings_dialog, null);
+        dialog = inflater.inflate(R.layout.settings_dialog, null);
         builder.setView(dialog);
         dialog.findViewById(R.id.settings_dialog_reset_button).setOnClickListener(this);
         dialog.findViewById(R.id.settings_dialog_save_button).setOnClickListener(this);
@@ -56,7 +82,23 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
         recyclerView.setAdapter(mAdapter);
         addColorsToDataForAdapter();
         mAdapter.notifyDataSetChanged();
+
+
+        onItemClickListener(mainActivity.color);
+        setCurrentTextView(mainActivity.color);
+
         return builder.create();
+    }
+
+    private void setCurrentTextView(int color) {
+        currentText = (TextView) dialog.findViewById(R.id.settings_current_tv);
+        GradientDrawable currentBackground = new GradientDrawable();
+        currentBackground.setShape(GradientDrawable.OVAL);
+        currentBackground.setStroke(7, color);
+        currentBackground.setColor(Color.WHITE);
+
+        currentText.setBackground(currentBackground);
+        currentText.setTextColor(color);
     }
 
     @Override
@@ -67,11 +109,15 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
                 break;
             case R.id.settings_dialog_reset_button:
                 mListener.onSettingsClickReset(this);
-                dismiss();
+                onItemClickListener(defaultColor);
                 break;
             case R.id.settings_dialog_save_button:
                 mListener.onSettingsClickChangeItemColor(this);
-                dismiss();
+                mainActivity.writeColor(selectedColor);
+                mainActivity.readAndSetColor();
+                setCurrentTextView(selectedColor);
+
+
                 break;
         }
     }

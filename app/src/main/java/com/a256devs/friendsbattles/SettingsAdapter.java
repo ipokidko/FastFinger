@@ -1,6 +1,8 @@
 package com.a256devs.friendsbattles;
 
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -58,7 +60,8 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.MyView
         holder.textView.setText("9");
         holder.textView.setTextColor(colorList.get(position));
         GradientDrawable newBackground = new GradientDrawable();
-        newBackground.setStroke(5, colorList.get(position));
+        newBackground.setShape(GradientDrawable.OVAL);
+        newBackground.setStroke(7, colorList.get(position));
         newBackground.setColor(Color.WHITE);
 
         holder.textView.setBackground(newBackground);
