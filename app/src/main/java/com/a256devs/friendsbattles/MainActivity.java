@@ -34,7 +34,7 @@ import java.util.Random;
 
 import static com.a256devs.friendsbattles.UiMethods.randomStringFromArray;
 
-public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener, ShareDialog.ShareYesListener, FacebookDialog.FacebookYesListener, ResetScoreDialog.ResetScoreYesListener, SettingsDialog.SettingsListener {
+public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener, ShareDialog.ShareYesListener, FacebookDialog.FacebookYesListener, ResetScoreDialog.ResetScoreYesListener {
 
     FacebookDialog facebookDialog = new FacebookDialog();
     ResetScoreDialog resetScoreDialog = new ResetScoreDialog();
@@ -200,22 +200,29 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 setSoundEffectsOfButtons(mVolumeState);
                 break;
             case R.id.facebook_button:
-                facebookDialog.show(getFragmentManager(), "facebook");
+                if (!facebookDialog.isAdded()) {
+                    facebookDialog.show(getFragmentManager(), "facebook");
+                }
                 break;
             case R.id.reset_button:
-                resetScoreDialog.show(getFragmentManager(), "resetScore");
+                if (!resetScoreDialog.isAdded()) {
+                    resetScoreDialog.show(getFragmentManager(), "resetScore");
+                }
                 break;
             case R.id.rate_button:
-                shareDialog.show(getFragmentManager(), "rate app");
+                if (!shareDialog.isAdded()) {
+                    shareDialog.show(getFragmentManager(), "rate app");
+                }
                 break;
             case R.id.help_button:
-                helpDialog.show(getFragmentManager(), "help app");
+                if (!helpDialog.isAdded()) {
+                    helpDialog.show(getFragmentManager(), "help app");
+                }
                 break;
             case R.id.settings_button:
-
-
-                settingsDialog.show(getFragmentManager(), "settings app");
-
+                if (!settingsDialog.isAdded()) {
+                    settingsDialog.show(getFragmentManager(), "settings app");
+                }
 
                 break;
         }
@@ -363,16 +370,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public void onSharePositiveClick(DialogFragment dialog) {
         intent.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.a256devs.friendsbattles"));
         startActivity(intent);
-    }
-
-    @Override
-    public void onSettingsClickReset(DialogFragment dialog) {
-
-    }
-
-    @Override
-    public void onSettingsClickChangeItemColor(DialogFragment dialog) {
-
     }
 
 

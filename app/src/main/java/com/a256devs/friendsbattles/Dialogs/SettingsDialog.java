@@ -30,7 +30,7 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
     View dialog;
     MainActivity mainActivity;
     int selectedColor;
-    int defaultColor = R.color.red;
+    int defaultColor = Color.RED;
 
     @Override
     public void onItemClickListener(int color) {
@@ -64,7 +64,7 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
 
 
     public Dialog onCreateDialog(Bundle saveInstanceState) {
-        mListener = (SettingsListener) getActivity();
+
         mainActivity = (MainActivity) getActivity();
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
