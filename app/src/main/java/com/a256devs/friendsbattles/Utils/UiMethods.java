@@ -1,4 +1,4 @@
-package com.a256devs.friendsbattles;
+package com.a256devs.friendsbattles.Utils;
 
 
 import java.util.Random;

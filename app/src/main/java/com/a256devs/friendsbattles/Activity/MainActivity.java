@@ -1,4 +1,4 @@
-package com.a256devs.friendsbattles;
+package com.a256devs.friendsbattles.Activity;
 
 import android.app.DialogFragment;
 import android.content.Context;
@@ -12,9 +12,6 @@ import android.net.Uri;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -26,13 +23,12 @@ import com.a256devs.friendsbattles.Dialogs.HelpDialog;
 import com.a256devs.friendsbattles.Dialogs.ResetScoreDialog;
 import com.a256devs.friendsbattles.Dialogs.SettingsDialog;
 import com.a256devs.friendsbattles.Dialogs.ShareDialog;
+import com.a256devs.friendsbattles.R;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 
-import static com.a256devs.friendsbattles.UiMethods.randomStringFromArray;
+import static com.a256devs.friendsbattles.Utils.UiMethods.randomStringFromArray;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener, View.OnClickListener, ShareDialog.ShareYesListener, FacebookDialog.FacebookYesListener, ResetScoreDialog.ResetScoreYesListener {
 
@@ -48,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private TextView mScoreInfoTextView;
     private TextView mTimerText;
     private TextView mBestScore;
+    private TextView mLoginText;
     private boolean mVolumeState = true;
     private ImageView mVolumeButton;
     private ImageView mFacebookButton;
@@ -116,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mRateButton = (ImageView) findViewById(R.id.rate_button);
         mHelpButton = (ImageView) findViewById(R.id.help_button);
         mSettingsButton = (ImageView) findViewById(R.id.settings_button);
+        mLoginText = (TextView) findViewById(R.id.login_tv);
 
         // Getting SharedPreferences file or read it if exist.
         sharedPref = getSharedPreferences(getString(R.string.app_preferences), Context.MODE_PRIVATE);
@@ -157,6 +155,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mRateButton.setOnClickListener(this);
         mHelpButton.setOnClickListener(this);
         mSettingsButton.setOnClickListener(this);
+        mLoginText.setOnClickListener(this);
 
 
         mTimer = new CountDownTimer(1000, 100) {
@@ -223,7 +222,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 if (!settingsDialog.isAdded()) {
                     settingsDialog.show(getFragmentManager(), "settings app");
                 }
-
+                break;
+            case R.id.login_tv:
+                Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(loginIntent);
                 break;
         }
 

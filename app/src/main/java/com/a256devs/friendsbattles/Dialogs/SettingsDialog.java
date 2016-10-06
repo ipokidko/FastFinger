@@ -15,11 +15,11 @@ import android.widget.TextView;
 
 
 import com.a256devs.friendsbattles.R;
-import com.a256devs.friendsbattles.SettingsAdapter;
+import com.a256devs.friendsbattles.Adapters.SettingsAdapter;
 
 import java.util.ArrayList;
 
-import com.a256devs.friendsbattles.MainActivity;
+import com.a256devs.friendsbattles.Activity.MainActivity;
 
 
 public class SettingsDialog extends DialogFragment implements View.OnClickListener, SettingsAdapter.OnItemClick {

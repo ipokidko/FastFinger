@@ -1,8 +1,6 @@
-package com.a256devs.friendsbattles;
+package com.a256devs.friendsbattles.Adapters;
 
-import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.a256devs.friendsbattles.Dialogs.SettingsDialog;
+import com.a256devs.friendsbattles.R;
 
 import java.util.ArrayList;
 
