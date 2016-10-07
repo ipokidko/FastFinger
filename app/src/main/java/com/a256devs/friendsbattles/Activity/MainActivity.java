@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     private SoundPool mSoundPool;
     private int mSoundId = 1;
-    private int mStreamId;
     AudioManager audioManager;
     float curVolume;
     float maxVolume;
