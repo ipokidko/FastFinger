@@ -1,6 +1,7 @@
 package com.a256devs.friendsbattles.Activity;
 
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,9 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.parse.LogInCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
-import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import com.a256devs.friendsbattles.R;
@@ -32,11 +31,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
 
+    private static final String TAG = "QuizActivity";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.v("flow", "Start of OnCreate");
 
+        Log.d(TAG, "onCreate() called");
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
@@ -51,28 +52,33 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         signInButton.setOnClickListener(this);
         signUpButton.setOnClickListener(this);
 
+        sharedPref = getSharedPreferences(getString(R.string.app_preferences), Context.MODE_PRIVATE);
+        editor = sharedPref.edit();
 
-        Log.v("flow", "end of OnCreate");
 
     }
 
 
     @Override
     public void onClick(View view) {
-        Log.v("Flow", "in on click");
+
 
         switch (view.getId()) {
             case R.id.sign_in_button:
-                Log.v("Flow", "in sign in");
-                ParseUser.logInInBackground("Username", "Password", new LogInCallback() {
+                Log.v(TAG, "in sign in");
+                ParseUser.logInInBackground(userName.getText().toString(), userPassword.getText().toString(), new LogInCallback() {
                     @Override
                     public void done(ParseUser parseUser, ParseException e) {
                         if (parseUser != null) {
+                            Log.v(TAG, "sign in work");
+                            writeUserToSharedPref(parseUser.getUsername());
+                            Log.v(TAG, "set user name");
                             //Login Successful
                             //you can display sth or do sth
                             //For example Welcome + ParseUser.getUsername()
 
                         } else {
+                            Log.v(TAG, "signIn fail");
                             //Login Fail
                             //get error by calling e.getMessage()
                         }
@@ -80,7 +86,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 });
                 break;
             case R.id.sign_up_button:
-                Log.v("flow", "in sign up");
+                Log.v(TAG, "in sign up");
                 ParseUser user = new ParseUser();
                 user.setUsername(userName.getText().toString());
                 user.setPassword(userPassword.getText().toString());
@@ -89,7 +95,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     public void done(ParseException e) {
                         if (e == null) {
                             Log.v("Flow", "sign up done");
-
+                            writeUserToSharedPref(userName.getText().toString());
                             //Register Successful
                             //you can display sth or do sth
                         } else {
@@ -105,6 +111,42 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 break;
         }
+    }
+
+    public void writeUserToSharedPref(String s) {
+        editor.putString("username", s);
+        editor.commit();
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d(TAG, "onStart() called");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause() called");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume() called");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop() called");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "onDestroy() called");
     }
 
 

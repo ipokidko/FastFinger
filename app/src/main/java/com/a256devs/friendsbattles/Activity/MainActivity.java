@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     ShareDialog shareDialog = new ShareDialog();
     HelpDialog helpDialog = new HelpDialog();
     SettingsDialog settingsDialog = new SettingsDialog();
+    private static final String TAG = "QuizActivity";
 
 
     int mCounter = 0;
@@ -326,6 +328,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         setSoundEffectsOfButtons(mVolumeState);
         readAndShowBestScore();
 
+        setUserName();
+
         TextView tipsTV = (TextView) findViewById(R.id.main_tips_tv);
         String s = randomStringFromArray(getResources().getStringArray(R.array.tips));
         tipsTV.setText(s);
@@ -373,6 +377,12 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         startActivity(intent);
     }
 
+
+    public void setUserName() {
+        String s = sharedPref.getString("username", "name");
+        mLoginText.setText(s);
+        Log.v(TAG, "set user name MainAct");
+    }
 
 }
 

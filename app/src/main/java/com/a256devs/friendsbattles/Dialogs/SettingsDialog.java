@@ -51,13 +51,7 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
 
     }
 
-    public interface SettingsListener {
-        void onSettingsClickReset(DialogFragment dialog);
 
-        void onSettingsClickChangeItemColor(DialogFragment dialog);
-    }
-
-    SettingsListener mListener;
     private ArrayList<Integer> colorsArrayList = new ArrayList<>();
     private RecyclerView recyclerView;
     private SettingsAdapter mAdapter;
@@ -108,11 +102,9 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
                 dismiss();
                 break;
             case R.id.settings_dialog_reset_button:
-                mListener.onSettingsClickReset(this);
                 onItemClickListener(defaultColor);
                 break;
             case R.id.settings_dialog_save_button:
-                mListener.onSettingsClickChangeItemColor(this);
                 mainActivity.writeColor(selectedColor);
                 mainActivity.readAndSetColor();
                 setCurrentTextView(selectedColor);
