@@ -1,4 +1,12 @@
 <resources>
+
+    <!--Main Activity-->
+    <!--Login Activity-->
+    <string name="login_upper">LOGIN</string>
+    <!--SignUp Activity-->
+    <string name="sign_up_upper">SIGN UP</string>
+    <!--Temporary-->
+
     <string name="app_name"><b>Friends</b>Battles</string>
     <string name="best_score">score</string>
     <string name="app_preferences">mySettings</string>
