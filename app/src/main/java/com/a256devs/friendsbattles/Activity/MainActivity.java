@@ -225,8 +225,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 }
                 break;
             case R.id.login_tv:
-                Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(loginIntent);
+                Intent signInIntent = new Intent(MainActivity.this, SignInActivity.class);
+                startActivity(signInIntent);
                 break;
         }
 

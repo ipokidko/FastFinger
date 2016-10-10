@@ -14,6 +14,10 @@
     <string name="reset_to_default">DEFAULT</string>
     <string name="set_this_color">SET COLOR</string>
 
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="email">email</string>
+
     <string name="save">SAVE</string>
     <string name="cancel">CANCEL</string>
     <string name="facebook_dialog_text">Share result on Facebook</string>

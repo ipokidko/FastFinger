@@ -25,27 +25,12 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/button_background"
-        android:textColorHint="@color/background_color"
         android:ems="10"
         android:hint="User name"
         android:inputType="textPersonName"
+        android:paddingLeft="16dp"
         android:textColor="@color/background_color"
-        android:paddingLeft="16dp" />
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/button_background"
-        android:ems="10"
-        android:hint="E-mail"
-        android:textColorHint="@color/background_color"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/background_color"
-        android:paddingLeft="16dp" />
+        android:textColorHint="@color/background_color" />
 
     <EditText
         android:id="@+id/password"
@@ -55,12 +40,12 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/button_background"
-        android:textColorHint="@color/background_color"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:paddingLeft="16dp"
         android:textColor="@color/background_color"
-        android:paddingLeft="16dp" />
+        android:textColorHint="@color/background_color" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -71,40 +56,58 @@
             android:id="@+id/sign_in_button"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:textColor="@color/background_color"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_weight="1"
             android:layout_margin="16dp"
-            android:clickable="true"
+            android:layout_weight="1"
             android:background="@drawable/button_background"
-            android:text="SIGN IN" />
+            android:clickable="true"
+            android:text="SIGN IN"
+            android:textColor="@color/background_color"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Button
-            android:id="@+id/sign_up_button"
+            android:id="@+id/skip_button"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:textColor="@color/background_color"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_weight="1"
             android:layout_margin="16dp"
-            android:clickable="true"
-
+            android:layout_weight="1"
             android:background="@drawable/button_background"
-            android:text="SIGN UP" />
+            android:clickable="true"
+            android:text="skip"
+            android:textColor="@color/background_color"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/skip_button"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:textColor="@color/background_color"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:clickable="true"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="left"
+        android:layout_marginLeft="16dp">
 
-        android:background="@drawable/button_background"
-        android:text="skip" />
+        <TextView
+            android:id="@+id/sign_in_not_registred_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not registered?"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/sign_up_button"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_background"
+            android:clickable="true"
+            android:text="SIGN UP"
+            android:textColor="@color/background_color"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
 </LinearLayout>
